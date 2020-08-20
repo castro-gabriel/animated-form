@@ -46,3 +46,36 @@ form.addEventListener('animationend', event => {
         document.querySelector('body').style.overflow = 'none'
     }
 })
+
+
+// logic for the background squares
+const ul_squares = document.querySelector('ul.squares')
+
+for (let i = 0; i < 12; i++) {
+    const li = document.createElement('li')
+    const random = (max, min) => Math.floor(Math.random() * (max - min) + min)
+
+    // fazendo as estilizacoes dos quadrados diferentes para cada um
+    const size = Math.floor(random(180, 10))
+
+    // posicionamento diferente na tela
+    const position = random(99, 1)
+
+    li.style.width = `${size}px`
+    li.style.height = `${size}px`
+    li.style.bottom = `-${size}px`
+
+    li.style.left = `${position}%`
+
+    // sair em momentos e ter durações diferentes
+    const delay = random(4, 0.1)
+    const duration = random(20, 10)
+
+    li.style.animationDelay = `${delay}s`
+    li.style.animationDuration = `${duration}s`
+
+    // terem timing diferente
+    li.style.animationTimingFunction = `cubic-bezier(${Math.random()}, ${Math.random()}, ${Math.random()}, ${Math.random()})`
+
+    ul_squares.appendChild(li)
+}
